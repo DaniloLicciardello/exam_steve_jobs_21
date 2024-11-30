@@ -1,1 +1,40 @@
-<p>card works!</p>
+<div class="container my-5">
+  <nz-switch [(ngModel)]="loading" class="d-none"></nz-switch>
+  <nz-row [nzGutter]="[24, 24]">
+    <nz-col nzSpan="6" *ngFor="let card of cards">
+      <nz-card
+        nzHoverable
+        [nzCover]="imageTemplate"
+        [nzLoading]="loading"
+        class="card-custom"
+      >
+        <div class="card-content d-flex justify-content-between">
+          <div>
+            <nz-card-meta
+              nzTitle="{{ card.title }}"
+              nzDescription="{{ card.subtitle }}"
+            ></nz-card-meta>
+          </div>
+
+          <div class="button-container">
+            <button (click)="onButtonClick(card)" class="slide">
+              Cliccami
+            </button>
+          </div>
+        </div>
+
+        <ng-template #imageTemplate>
+          <div class="image-container">
+            <div *ngIf="loading" class="image-placeholder"></div>
+            <img
+              *ngIf="!loading"
+              alt="{{ card.title }}"
+              src="https://picsum.photos/200/300"
+              class="image-card"
+            />
+          </div>
+        </ng-template>
+      </nz-card>
+    </nz-col>
+  </nz-row>
+</div>

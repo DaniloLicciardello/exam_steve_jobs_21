@@ -15,11 +15,12 @@ import { CardComponent } from './components/card/card.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { FooterComponent } from './components/footer/footer.component';
 
 registerLocaleData(it);
 
 @NgModule({
-  declarations: [AppComponent, CardComponent, NavbarComponent],
+  declarations: [AppComponent, CardComponent, NavbarComponent, FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

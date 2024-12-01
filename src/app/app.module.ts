@@ -24,6 +24,7 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 registerLocaleData(it);
 
@@ -43,7 +44,8 @@ registerLocaleData(it);
     NzAvatarModule,
     NzSwitchModule,
     NzGridModule,
-    NzButtonModule
+    NzButtonModule,
+    NzSelectModule
   ],
   providers: [{ provide: NZ_I18N, useValue: it_IT }],
   bootstrap: [AppComponent],

@@ -1,7 +1,13 @@
 <div class="container my-5">
   <nz-switch [(ngModel)]="loading" class="d-none"></nz-switch>
   <nz-row [nzGutter]="[24, 24]">
-    <nz-col nzSpan="6" *ngFor="let card of cards">
+    <nz-col
+      [nzLg]="{ span: 6, offset: 0 }"
+      [nzMd]="{ span: 12, offset: 0 }"
+      [nzSm]="{ span: 24, offset: 0 }"
+      [nzXs]="{ span: 24, offset: 0 }"
+      *ngFor="let card of cards"
+    >
       <nz-card
         nzHoverable
         [nzCover]="imageTemplate"

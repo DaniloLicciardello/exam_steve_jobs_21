@@ -14,6 +14,7 @@ import { CardComponent } from './components/card/card.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
@@ -29,7 +30,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 registerLocaleData(it);
 
 @NgModule({
-  declarations: [AppComponent, CardComponent, NavbarComponent, FooterComponent, HomeComponent],
+  declarations: [AppComponent, CardComponent, NavbarComponent, FooterComponent, HomeComponent, CarouselComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

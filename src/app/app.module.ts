@@ -27,6 +27,7 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { DetailsComponent } from './components/details/details.component';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 registerLocaleData(it);
 
@@ -47,7 +48,8 @@ registerLocaleData(it);
     NzSwitchModule,
     NzGridModule,
     NzButtonModule,
-    NzSelectModule
+    NzSelectModule,
+    NzDatePickerModule
   ],
   providers: [{ provide: NZ_I18N, useValue: it_IT }],
   bootstrap: [AppComponent],

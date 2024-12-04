@@ -1,5 +1,5 @@
 <div
-  class="container d-flex flex-column h-75 text-center position-relative py-3 pt-5"
+  class="container d-flex flex-column text-center position-relative py-5"
   *ngIf="data; else notFound"
 >
   <!-- Intestazione -->
@@ -8,9 +8,10 @@
   </div>
 
   <!-- Corpo delle informazioni -->
-  <div class="w-100 d-flex justify-content-between">
-    <div class="w-50 text-start">
-      <h5>{{ data.subtitle }}</h5>
+  <div class="w-100 row">
+    <!-- Colonna delle informazioni generali -->
+    <div class="col-12 col-md-6 text-start">
+      <h5 class="mb-2">{{ data.subtitle }}</h5>
       <p>{{ data.description }}</p>
 
       <nz-range-picker
@@ -20,8 +21,8 @@
         [nzFormat]="'dd/MM/yyyy'"
       ></nz-range-picker>
 
-      <p><b>Durata viaggio: </b>{{ data.duration }}</p>
-      <p><b>Prezzo: </b>{{ data.price }}€</p>
+      <p class="mb-2"><b>Durata viaggio: </b>{{ data.duration }}</p>
+      <p class="mb-2"><b>Prezzo: </b>{{ data.price }}€</p>
 
       <p *ngIf="!data.arrival && !data.departure" class="text-center mt-3">
         Nessun treno disponibile per questo percorso.
@@ -29,23 +30,28 @@
       <a routerLink="/" class="btn btn-custom mt-3">Torna indietro</a>
     </div>
 
-    <nz-collapse [nzBordered]="false">
-      <nz-collapse-panel
-        nzHeader="Descrizione del viaggio"
-        [nzActive]="true"
-        class="text-start fs-6"
-      >
-        <h6>{{ data.description }}</h6>
-        <h6>Orario di partenza: {{ data.departure | date }}</h6>
-        <h6>Orario di arrivo: {{ data.arrival | date }}</h6>
-        <h6>Posti disponibili: {{ data.seatsAvailable }}</h6>
-        <h6>Tipo di treno: {{ data.trainType }}</h6>
-        <h6>Servizi: {{ data.services.join(", ") }}</h6>
-      </nz-collapse-panel>
-    </nz-collapse>
+    <!-- Colonna del pannello descrizione del viaggio -->
+    <div class="col-12 offset-md-1 col-md-5 pt-3 pt-md-0">
+      <nz-collapse [nzBordered]="false" class="w-100">
+        <nz-collapse-panel
+          nzHeader="Descrizione del viaggio"
+          [nzActive]="true"
+          class="text-start fs-6"
+        >
+          <div class="d-flex flex-column gap-2">
+            <h6>{{ data.description }}</h6>
+            <h6>Orario di partenza: {{ data.departure | date }}</h6>
+            <h6>Orario di arrivo: {{ data.arrival | date }}</h6>
+            <h6>Posti disponibili: {{ data.seatsAvailable }}</h6>
+            <h6>Tipo di treno: {{ data.trainType }}</h6>
+            <h6>Servizi: {{ data.services.join(", ") }}</h6>
+          </div>
+        </nz-collapse-panel>
+      </nz-collapse>
+    </div>
   </div>
 </div>
 
 <ng-template #notFound>
-  <p>Data not found. <a routerLink="/">Go back to list</a></p>
+  <p>Treno non trovato. <a routerLink="/">Torna alla lista</a></p>
 </ng-template>

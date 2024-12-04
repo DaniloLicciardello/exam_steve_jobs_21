@@ -1,34 +1,34 @@
 <div class="bg-transparent">
   <div class="container">
-    <div class="row">
-      <img
-        src="../../../assets/images/logo-trenitalia.svg"
-        alt="Treni Italia"
-        class="w-25 h-25"
-      />
-    </div>
+    <nz-row>
+      <nz-col nzSpan="24">
+        <img
+          src="../../../assets/images/logo-trenitalia.svg"
+          alt="Treni Italia"
+          class="foo-logo"
+        />
+      </nz-col>
+    </nz-row>
 
-    <div class="row pt-3">
-      <div class="col-4">
+    <nz-row [nzGutter]="[24, 24]" class="pt-4">
+      <nz-col
+        [nzLg]="{ span: 8, offset: 0 }"
+        [nzMd]="{ span: 8, offset: 0 }"
+        [nzSm]="{ span: 24, offset: 0 }"
+        [nzXs]="{ span: 24, offset: 0 }"
+        *ngFor="let section of ['Chi siamo', 'Assistenza', 'Contatti']"
+      >
         <ul class="list-unstyled">
-          <li class="fw-bold fs-5">Chi siamo</li>
-          <li>Parla con noi</li>
-          <li>La sostenibilità</li>
-          <li>Carriera</li>
-        </ul>
-      </div>
-      <div class="col-4">
-        <ul class="list-unstyled">
-          <li class="fw-bold fs-5">Assistenza</li>
-          <li>Privacy</li>
-          <li>Termini e condizioni</li>
-          <li>Cookie</li>
-        </ul>
-      </div>
-      <div class="col-4">
-        <ul class="list-unstyled">
-          <li class="fw-bold fs-5">Contatti</li>
-          <li>
+          <li class="fw-bold fs-5 mb-2">{{ section }}</li>
+          <li *ngIf="section === 'Chi siamo'">Parla con noi</li>
+          <li *ngIf="section === 'Chi siamo'">La sostenibilità</li>
+          <li *ngIf="section === 'Chi siamo'">Carriera</li>
+
+          <li *ngIf="section === 'Assistenza'">Privacy</li>
+          <li *ngIf="section === 'Assistenza'">Termini e condizioni</li>
+          <li *ngIf="section === 'Assistenza'">Cookie</li>
+
+          <li *ngIf="section === 'Contatti'">
             <img
               src="../../../assets/images/social/facebook.png"
               alt="Facebook"
@@ -36,7 +36,7 @@
             />
             Facebook
           </li>
-          <li>
+          <li *ngIf="section === 'Contatti'">
             <img
               src="../../../assets/images/social/x.svg"
               alt="X"
@@ -44,7 +44,7 @@
             />
             Twitter
           </li>
-          <li>
+          <li *ngIf="section === 'Contatti'">
             <img
               src="../../../assets/images/social/instagram.png"
               alt="Instagram"
@@ -53,13 +53,14 @@
             Instagram
           </li>
         </ul>
-      </div>
-    </div>
+      </nz-col>
+    </nz-row>
   </div>
-  <div class="">
+
+  <div class="bg-white py-2 mt-1 mt-md-3">
     <div class="container">
-      <div class="d-flex justify-content-center align-items-center">
-        <p class="text-center m-0 text-dark fs-6">© 2022 Treni Italia</p>
+      <div class="text-center">
+        <p class="text-dark m-0 fs-6">© 2022 Treni Italia</p>
       </div>
     </div>
   </div>

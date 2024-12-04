@@ -10,3 +10,8 @@
   border-radius: 8px;
   width: 180px;
 }
+
+.form-control:focus {
+  box-shadow: none;
+  border: 1px solid #dee2e6;
+}

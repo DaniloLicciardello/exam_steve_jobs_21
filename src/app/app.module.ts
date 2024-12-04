@@ -28,11 +28,20 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { DetailsComponent } from './components/details/details.component';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 
 registerLocaleData(it);
 
 @NgModule({
-  declarations: [AppComponent, CardComponent, NavbarComponent, FooterComponent, HomeComponent, CarouselComponent, DetailsComponent],
+  declarations: [
+    AppComponent,
+    CardComponent,
+    NavbarComponent,
+    FooterComponent,
+    HomeComponent,
+    CarouselComponent,
+    DetailsComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -49,7 +58,8 @@ registerLocaleData(it);
     NzGridModule,
     NzButtonModule,
     NzSelectModule,
-    NzDatePickerModule
+    NzDatePickerModule,
+    NzCollapseModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: it_IT }],
   bootstrap: [AppComponent],

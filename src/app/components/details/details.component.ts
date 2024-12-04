@@ -8,6 +8,7 @@ import { Card, cards } from '../../../assets/data/card';
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent {
+  cards: Card[] = cards;
   data?: Card;
   date = null;
   selectedDateRange: [Date, Date] | null = null;
@@ -50,5 +51,11 @@ export class DetailsComponent {
         console.warn('Selected range does not match train availability.');
       }
     }
+  }
+
+  selectedTrain: Card | null = null;
+
+  onTrainClick(train: Card): void {
+    this.selectedTrain = this.selectedTrain?.id === train.id ? null : train;
   }
 }

@@ -20,92 +20,29 @@
         [nzFormat]="'dd/MM/yyyy'"
       ></nz-range-picker>
 
-      <p>Durata viaggio: {{ data.duration }}</p>
-      <p>Prezzo: {{ data.price }}€</p>
+      <p><b>Durata viaggio: </b>{{ data.duration }}</p>
+      <p><b>Prezzo: </b>{{ data.price }}€</p>
 
       <p *ngIf="!data.arrival && !data.departure" class="text-center mt-3">
         Nessun treno disponibile per questo percorso.
       </p>
-      <a routerLink="/" class="btn btn-primary mt-3">Torna indietro</a>
+      <a routerLink="/" class="btn btn-custom mt-3">Torna indietro</a>
     </div>
 
-    <!-- Accordion a destra -->
-    <div class="top-0 end-0 m-3" style="width: 400px">
-      <div class="accordion" id="accordionExample">
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingOne">
-            <button
-              class="accordion-button"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseOne"
-              aria-expanded="true"
-              aria-controls="collapseOne"
-            >
-              Detail 1
-            </button>
-          </h2>
-          <div
-            id="collapseOne"
-            class="accordion-collapse collapse show"
-            aria-labelledby="headingOne"
-            data-bs-parent="#accordionExample"
-          >
-            <div class="accordion-body">
-              Additional information or details about Detail 1.
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingTwo">
-            <button
-              class="accordion-button collapsed"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseTwo"
-              aria-expanded="false"
-              aria-controls="collapseTwo"
-            >
-              Detail 2
-            </button>
-          </h2>
-          <div
-            id="collapseTwo"
-            class="accordion-collapse collapse"
-            aria-labelledby="headingTwo"
-            data-bs-parent="#accordionExample"
-          >
-            <div class="accordion-body">
-              Additional information or details about Detail 2.
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingThree">
-            <button
-              class="accordion-button collapsed"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseThree"
-              aria-expanded="false"
-              aria-controls="collapseThree"
-            >
-              Detail 3
-            </button>
-          </h2>
-          <div
-            id="collapseThree"
-            class="accordion-collapse collapse"
-            aria-labelledby="headingThree"
-            data-bs-parent="#accordionExample"
-          >
-            <div class="accordion-body">
-              Additional information or details about Detail 3.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <nz-collapse [nzBordered]="false">
+      <nz-collapse-panel
+        nzHeader="Descrizione del viaggio"
+        [nzActive]="true"
+        class="text-start fs-6"
+      >
+        <h6>{{ data.description }}</h6>
+        <h6>Orario di partenza: {{ data.departure | date }}</h6>
+        <h6>Orario di arrivo: {{ data.arrival | date }}</h6>
+        <h6>Posti disponibili: {{ data.seatsAvailable }}</h6>
+        <h6>Tipo di treno: {{ data.trainType }}</h6>
+        <h6>Servizi: {{ data.services.join(", ") }}</h6>
+      </nz-collapse-panel>
+    </nz-collapse>
   </div>
 </div>
 

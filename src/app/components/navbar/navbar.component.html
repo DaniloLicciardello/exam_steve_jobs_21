@@ -39,7 +39,10 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Chi siamo</a>
+          <a class="nav-link" [routerLink]="'/detail/:id'">Chi siamo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Compra</a>
         </li>
         <li class="nav-item dropdown">
           <a
@@ -67,6 +70,19 @@
       </ul>
 
       <form class="d-flex" role="search">
+        <!-- <nz-select
+          nzShowSearch
+          nzAllowClear
+          nzPlaceHolder="Seleziona una card"
+          [(ngModel)]="selectedValue"
+          (ngModelChange)="onSelectionChange($event)"
+        >
+          <nz-option
+            *ngFor="let nav of selectNav"
+            [nzLabel]="nav.label"
+            [nzValue]="nav.value"
+          ></nz-option>
+        </nz-select> -->
         <nz-select
           nzShowSearch
           nzAllowClear

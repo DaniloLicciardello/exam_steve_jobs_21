@@ -17,15 +17,18 @@
         <div class="card-content d-flex justify-content-between">
           <div>
             <nz-card-meta
-              nzTitle="{{ card.title }}"
-              nzDescription="{{ card.subtitle }}"
+              [nzTitle]="card.title"
+              [nzDescription]="card.subtitle + ' - ' + card.price + '€'"
             ></nz-card-meta>
           </div>
 
           <div class="button-container">
-            <button (click)="onButtonClick(card)" class="slide">
+            <a
+              [routerLink]="['/detail/', card.id]"
+              class="slide text-decoration-none"
+            >
               Cliccami
-            </button>
+            </a>
           </div>
         </div>
 
@@ -34,7 +37,7 @@
             <div *ngIf="loading" class="image-placeholder"></div>
             <img
               *ngIf="!loading"
-              alt="{{ card.title }}"
+              [alt]="card.title"
               src="https://picsum.photos/200/300"
               class="image-card"
             />

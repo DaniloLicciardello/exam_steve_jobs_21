@@ -26,11 +26,12 @@ import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { DetailsComponent } from './components/details/details.component';
 
 registerLocaleData(it);
 
 @NgModule({
-  declarations: [AppComponent, CardComponent, NavbarComponent, FooterComponent, HomeComponent, CarouselComponent],
+  declarations: [AppComponent, CardComponent, NavbarComponent, FooterComponent, HomeComponent, CarouselComponent, DetailsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

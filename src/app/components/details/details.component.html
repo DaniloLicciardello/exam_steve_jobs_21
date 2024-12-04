@@ -1,0 +1,16 @@
+<div
+  class="container d-flex flex-column justify-content-center align-items-center h-75 text-center"
+  *ngIf="data; else notFound"
+>
+  <h1>{{ data.title }}</h1>
+  <h2>{{ data.subtitle }}</h2>
+  <p>{{ data.description }}</p>
+  <p>Price: {{ data.price | currency }}</p>
+  <p *ngIf="data.start">Available from: {{ data.start }}</p>
+  <p *ngIf="data.end">Available until: {{ data.end }}</p>
+  <a routerLink="/" class="btn btn-primary mt-3">Back to List</a>
+</div>
+
+<ng-template #notFound>
+  <p>Data not found. <a routerLink="/">Go back to list</a></p>
+</ng-template>

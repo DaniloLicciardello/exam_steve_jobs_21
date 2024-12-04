@@ -70,31 +70,12 @@
       </ul>
 
       <form class="d-flex" role="search">
-        <!-- <nz-select
-          nzShowSearch
-          nzAllowClear
-          nzPlaceHolder="Seleziona una card"
-          [(ngModel)]="selectedValue"
-          (ngModelChange)="onSelectionChange($event)"
-        >
-          <nz-option
-            *ngFor="let nav of selectNav"
-            [nzLabel]="nav.label"
-            [nzValue]="nav.value"
-          ></nz-option>
-        </nz-select> -->
-        <nz-select
-          nzShowSearch
-          nzAllowClear
-          nzPlaceHolder="Seleziona"
-          [(ngModel)]="selectedValue"
-        >
-          <nz-option
-            *ngFor="let nav of selectNav"
-            [nzLabel]="nav.label"
-            [nzValue]="nav.value"
-          ></nz-option>
-        </nz-select>
+        <input
+          type="text"
+          class="form-control me-2"
+          placeholder="Cerca..."
+          (input)="onSearch($event)"
+        />
       </form>
     </div>
   </div>

@@ -75,6 +75,23 @@
             </div>
           </div>
         </div>
+
+        <!-- Input per inviare messaggi -->
+        <div *ngIf="isContactSelected" class="message-input-container">
+          <button class="add-button">+</button>
+          <input
+            type="text"
+            [(ngModel)]="newMessageContent"
+            placeholder="Scrivi un messaggio"
+            class="message-input"
+          />
+          <button (click)="sendMessage()" class="send-button">
+            <img
+              src="../../../assets/images/whatsApp/send.svg"
+              alt="Send Message"
+            />
+          </button>
+        </div>
         <!-- Messaggio se nessun contatto è selezionato -->
         <ng-template #noContactSelected>
           <div class="no-contact">

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Contact, contacts } from 'src/assets/data/contact';
+import { Contact, contacts, Message } from 'src/assets/data/contact';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,16 +9,36 @@ import { Contact, contacts } from 'src/assets/data/contact';
 export class SidebarComponent {
   isCollapsed = false;
   contacts: Contact[] = [];
+  isContactSelected: boolean = false;
+  selectedContact: any = null;
+  newMessageContent: string = '';
 
   ngOnInit() {
+    const storedContacts = localStorage.getItem('contacts');
+    this.contacts = storedContacts ? JSON.parse(storedContacts) : contacts;
     this.contacts = contacts;
   }
 
-  // Contatto selezionato
-  selectedContact: any = null;
-
-  // Funzione per selezionare un contatto
-  selectContact(contact: any) {
+  selectContact(contact: Contact) {
     this.selectedContact = contact;
+    this.isContactSelected = true;
+  }
+
+  sendMessage(): void {
+    if (!this.newMessageContent.trim() || !this.selectedContact) {
+      return;
+    }
+
+    const newMessage: Message = {
+      id: this.selectedContact!.messages.length + 1,
+      sender: 'me',
+      content: this.newMessageContent,
+      timestamp: new Date().toISOString(),
+    };
+
+    this.selectedContact!.messages.push(newMessage);
+    this.newMessageContent = '';
+
+    localStorage.setItem('contacts', JSON.stringify(this.contacts));
   }
 }

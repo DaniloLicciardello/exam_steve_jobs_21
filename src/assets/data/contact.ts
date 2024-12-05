@@ -11,7 +11,9 @@ export interface Contact {
   avatar: string;
   lastMessage: string;
   lastActive: string;
+  number_phone: string;
   messages: Message[];
+  status: string; 
 }
 
 export const contacts: Contact[] = [
@@ -21,6 +23,8 @@ export const contacts: Contact[] = [
     avatar: 'T',
     lastMessage: 'Ciao, come stai?',
     lastActive: '2023-12-05T08:30:00Z',
+    number_phone: '39 333 1234567',
+    status: 'Pronto per una giornata produttiva!', 
     messages: [
       {
         id: 1,
@@ -42,6 +46,8 @@ export const contacts: Contact[] = [
     avatar: 'B',
     lastMessage: 'Vediamoci domani.',
     lastActive: '2023-12-05T09:00:00Z',
+    number_phone: '39 347 8901234',
+    status: 'In pausa caffè, ritorno tra poco!', 
     messages: [
       {
         id: 1,
@@ -63,6 +69,8 @@ export const contacts: Contact[] = [
     avatar: 'A',
     lastMessage: 'Buonanotte!',
     lastActive: '2023-12-05T07:45:00Z',
+    number_phone: '39 328 5678901',
+    status: 'Ogni giorno è una nuova opportunità!', 
     messages: [
       {
         id: 1,
@@ -90,6 +98,8 @@ export const contacts: Contact[] = [
     avatar: 'S',
     lastMessage: 'Ci vediamo presto!',
     lastActive: '2023-12-05T06:30:00Z',
+    number_phone: '39 366 4567890',
+    status: 'Il successo è la somma di piccoli sforzi ripetuti ogni giorno!', 
     messages: [
       {
         id: 1,
@@ -117,6 +127,8 @@ export const contacts: Contact[] = [
     avatar: 'E',
     lastMessage: 'Finiamo tutto domani.',
     lastActive: '2023-12-05T04:50:00Z',
+    number_phone: '39 380 1234567',
+    status: 'Ogni piccolo passo è un passo verso il successo!', 
     messages: [
       {
         id: 1,
@@ -144,6 +156,8 @@ export const contacts: Contact[] = [
     avatar: 'J',
     lastMessage: 'Chiamami quando puoi.',
     lastActive: '2023-12-04T22:30:00Z',
+    number_phone: '39 392 8901234',
+    status: 'Non smettere mai di imparare!', 
     messages: [
       {
         id: 1,
@@ -171,6 +185,8 @@ export const contacts: Contact[] = [
     avatar: 'L',
     lastMessage: 'Grazie per l’aiuto!',
     lastActive: '2023-12-05T00:15:00Z',
+    number_phone: '39 320 5678901',
+    status: 'L’impegno è la chiave del successo!', 
     messages: [
       {
         id: 1,
@@ -198,6 +214,8 @@ export const contacts: Contact[] = [
     avatar: 'O',
     lastMessage: 'Ci sentiamo presto!',
     lastActive: '2023-12-05T01:45:00Z',
+    number_phone: '39 340 1234567',
+    status: 'Rimanere positivi porta sempre ai risultati migliori!', 
     messages: [
       {
         id: 1,
@@ -225,6 +243,8 @@ export const contacts: Contact[] = [
     avatar: 'N',
     lastMessage: 'Controllo e ti faccio sapere.',
     lastActive: '2023-12-04T21:30:00Z',
+    number_phone: '39 351 8901234',
+    status: 'Ogni errore è un’opportunità di crescita!', 
     messages: [
       {
         id: 1,
@@ -246,6 +266,8 @@ export const contacts: Contact[] = [
     avatar: 'A',
     lastMessage: 'Tutto pronto per l’evento?',
     lastActive: '2023-12-05T03:30:00Z',
+    number_phone: '39 389 5678901',
+    status: 'Ogni passo avanti è una vittoria!', 
     messages: [
       {
         id: 1,

@@ -31,6 +31,7 @@ import { DetailsComponent } from './components/details/details.component';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 
 registerLocaleData(it);
 
@@ -63,7 +64,8 @@ registerLocaleData(it);
     NzSelectModule,
     NzDatePickerModule,
     NzCollapseModule,
-    NzIconModule
+    NzIconModule,
+    NzDrawerModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: it_IT }],
   bootstrap: [AppComponent],

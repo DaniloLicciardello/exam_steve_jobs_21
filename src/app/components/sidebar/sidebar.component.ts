@@ -12,6 +12,7 @@ export class SidebarComponent {
   isContactSelected: boolean = false;
   selectedContact: any = null;
   newMessageContent: string = '';
+  isDrawerVisible: boolean = false;
 
   ngOnInit() {
     this.contacts = contacts;
@@ -28,6 +29,7 @@ export class SidebarComponent {
   selectContact(contact: Contact) {
     this.selectedContact = contact;
     this.isContactSelected = true;
+    console.log(this.selectedContact); // Per verificare il valore di phone
   }
 
   sendMessage(): void {
@@ -46,5 +48,9 @@ export class SidebarComponent {
     this.newMessageContent = '';
 
     localStorage.setItem('contacts', JSON.stringify(this.contacts));
+  }
+
+  openDrawer(): void {
+    this.isDrawerVisible = true;
   }
 }

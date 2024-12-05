@@ -22,6 +22,7 @@
 
 .contact-avatar {
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .contact-name {
@@ -30,15 +31,17 @@
 
 .chat-container {
   padding: 0 !important;
-  background-color: #f0f2f5;
+  background-color: #1f2c33 !important;
+  color: #e6f7ff;
   height: 100%;
 }
 
 .chat-content {
   padding: 16px;
-  background: white;
-  border-radius: 8px;
+  border-radius: 0 !important;
   min-height: 200px;
+  background-image: url("../../../assets/images/whatsApp/wallpaper.webp") !important;
+  object-fit: cover;
 }
 
 .chat-message {
@@ -196,7 +199,6 @@
   align-items: center;
   padding: 10px;
   background-color: #1f2c33;
-  border-top: 1px solid #2c3e50;
 }
 
 .message-input {
@@ -207,6 +209,10 @@
   border-radius: 5px;
   background-color: #2c3e50;
   color: white;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .message-input::placeholder {
@@ -225,4 +231,58 @@
 .add-button:hover,
 .send-button:hover {
   color: #e6f7ff;
+}
+
+/* contatti */
+.details-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.details-avatar {
+  width: 96px;
+  height: 96px;
+  font-size: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.details-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.details-number {
+  font-size: 16px;
+  color: #555;
+  margin-top: 8px;
+}
+
+::ng-deep .ant-drawer-header {
+  background: #1f2c33 !important;
+  color: #fff;
+  border: 0;
+}
+
+::ng-deep .ant-drawer-body {
+  background: #1f2c33 !important;
+  color: #fff;
+}
+
+.details-info-text {
+  margin: 30px 0;
+  text-align: start;
+  width: 100%;
+}
+
+.details-info-title {
+  color: #8697a0;
+}
+
+::ng-deep .ant-drawer-title {
+  color: #fff !important;
 }

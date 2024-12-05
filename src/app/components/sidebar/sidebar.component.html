@@ -40,6 +40,8 @@
             nzSize="large"
             nzText="{{ selectedContact.avatar[0] }}"
             class="contact-avatar mr-3"
+            (click)="isDrawerVisible = true"
+            onkeyup="openDrawer()"
           ></nz-avatar>
           <div>
             <h3 class="contact-name">{{ selectedContact.name }}</h3>
@@ -51,6 +53,31 @@
         </div>
       </div>
     </nz-header>
+
+    <nz-drawer
+      [nzClosable]="true"
+      [nzVisible]="isDrawerVisible"
+      nzPlacement="right"
+      nzTitle="Info contatto"
+      (nzOnClose)="isDrawerVisible = false"
+    >
+      <ng-container *nzDrawerContent>
+        <div class="details-info" *ngIf="selectedContact">
+          <nz-avatar
+            nzSize="large"
+            nzText="{{ selectedContact.avatar[0] }}"
+            class="details-avatar"
+          ></nz-avatar>
+          <h3 class="details-name">{{ selectedContact.name }}</h3>
+          <p class="details-number">+39 366 4567890</p>
+
+          <div class="details-info-text">
+            <p class="details-info-title">Info</p>
+            <p>Ciao! Sto usando WhatsApp.</p>
+          </div>
+        </div>
+      </ng-container>
+    </nz-drawer>
 
     <nz-content>
       <div class="chat-container">
@@ -100,6 +127,5 @@
         </ng-template>
       </div>
     </nz-content>
-    <!-- <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer> -->
   </nz-layout>
 </nz-layout>

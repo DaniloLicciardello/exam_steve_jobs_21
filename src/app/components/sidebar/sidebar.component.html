@@ -80,9 +80,9 @@
         <div *ngIf="isContactSelected" class="message-input-container">
           <button class="add-button">+</button>
           <input
-            type="text"
             [(ngModel)]="newMessageContent"
             placeholder="Scrivi un messaggio"
+            (keyup.enter)="sendMessage()"
             class="message-input"
           />
           <button (click)="sendMessage()" class="send-button">

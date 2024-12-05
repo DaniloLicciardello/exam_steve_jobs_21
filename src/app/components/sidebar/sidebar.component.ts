@@ -14,9 +14,15 @@ export class SidebarComponent {
   newMessageContent: string = '';
 
   ngOnInit() {
-    const storedContacts = localStorage.getItem('contacts');
-    this.contacts = storedContacts ? JSON.parse(storedContacts) : contacts;
     this.contacts = contacts;
+
+    const storedContacts = localStorage.getItem('contacts');
+    if (storedContacts) {
+      this.contacts = JSON.parse(storedContacts);
+    } else {
+      // Se non ci sono dati nel localStorage, carica i contatti di default (se disponibili)
+      this.contacts = contacts;
+    }
   }
 
   selectContact(contact: Contact) {

@@ -56,7 +56,7 @@
                   ></nz-avatar>
                 </ng-template>
 
-                <span>{{ contact.name }}</span>
+                <span class="ms-3">{{ contact.name }}</span>
               </div>
             </li>
           </ul>
@@ -81,7 +81,7 @@
             ></nz-avatar>
 
             <div class="contact-details d-flex flex-column ms-2">
-              <span class="contact-name" *ngIf="!isCollapsed">{{
+              <span class="contact-name-details" *ngIf="!isCollapsed">{{
                 contact.name
               }}</span>
               <span class="last-message" *ngIf="contact.lastMessage">{{

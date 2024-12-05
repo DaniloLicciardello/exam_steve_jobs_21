@@ -24,10 +24,6 @@
   cursor: pointer;
 }
 
-.contact-name {
-  vertical-align: middle;
-}
-
 .chat-content {
   padding: 16px;
   border-radius: 0 !important;
@@ -70,6 +66,15 @@
   color: #fff;
   margin-bottom: -20px !important;
   margin-top: 10px !important;
+}
+
+.contact-name-details {
+  margin-bottom: -20px !important;
+  margin-top: 0;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #fff;
+  vertical-align: middle;
 }
 
 .last-seen {
@@ -166,12 +171,6 @@
 }
 
 /* Header */
-.contact-name {
-  font-weight: bold;
-  color: white;
-  margin: 0;
-}
-
 .last-seen {
   color: #a0a0a0;
   font-size: 0.85rem;
@@ -347,4 +346,8 @@
   .ant-menu-submenu-title
   > .ant-menu-title-content {
   max-height: 60px;
+}
+
+::ng-deep .ant-layout-content {
+  height: 92vh;
 }

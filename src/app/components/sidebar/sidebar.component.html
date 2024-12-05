@@ -1,0 +1,74 @@
+<nz-layout>
+  <!-- Sidebar per i contatti -->
+  <nz-sider
+    [nzWidth]="300"
+    [nzCollapsible]="true"
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
+  >
+    <div class="logo">
+      <h2 *ngIf="!isCollapsed" class="sidebar-header fs-5">Chat</h2>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li
+        *ngFor="let contact of contacts"
+        nz-menu-item
+        (click)="selectContact(contact)"
+        onkeydown="selectContact(contact)"
+      >
+        <nz-avatar
+          nzSize="small"
+          nzText="{{ contact.lastMessage[0] }}"
+          class="contact-avatar"
+        ></nz-avatar>
+        <span class="contact-name" *ngIf="!isCollapsed">{{
+          contact.name
+        }}</span>
+      </li>
+    </ul>
+  </nz-sider>
+
+  <!-- Layout principale -->
+  <nz-layout>
+    <nz-header>
+      <div
+        class="d-flex flex-column justify-content-start align-items-start"
+        *ngIf="selectedContact"
+      >
+        <h3 class="contact-name">{{ selectedContact.name }}</h3>
+        <span class="last-seen"
+          >Ultimo accesso alle:
+          {{ selectedContact.lastActive | date : "HH:mm" }}</span
+        >
+      </div>
+    </nz-header>
+
+    <nz-content>
+      <div class="chat-container">
+        <div
+          *ngIf="selectedContact; else noContactSelected"
+          class="chat-content"
+        >
+          <div *ngFor="let message of selectedContact.messages">
+            <div
+              [class]="
+                message.sender === 'you'
+                  ? 'message outgoing'
+                  : 'message incoming'
+              "
+            >
+              <p>{{ message.text }}</p>
+              <span class="message-time">{{ message.time }}</span>
+            </div>
+          </div>
+        </div>
+        <ng-template #noContactSelected>
+          <div class="no-contact">
+            <p>Seleziona un contatto per iniziare a chattare!</p>
+          </div>
+        </ng-template>
+      </div>
+    </nz-content>
+    <!-- <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer> -->
+  </nz-layout>
+</nz-layout>

@@ -15,6 +15,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
@@ -29,6 +30,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { DetailsComponent } from './components/details/details.component';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 registerLocaleData(it);
 
@@ -41,6 +43,7 @@ registerLocaleData(it);
     HomeComponent,
     CarouselComponent,
     DetailsComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +63,7 @@ registerLocaleData(it);
     NzSelectModule,
     NzDatePickerModule,
     NzCollapseModule,
+    NzIconModule
   ],
   providers: [{ provide: NZ_I18N, useValue: it_IT }],
   bootstrap: [AppComponent],

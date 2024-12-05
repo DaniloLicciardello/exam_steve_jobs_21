@@ -18,7 +18,7 @@
       >
         <nz-avatar
           nzSize="small"
-          nzText="{{ contact.lastMessage[0] }}"
+          nzText="{{ contact.avatar[0] }}"
           class="contact-avatar"
         ></nz-avatar>
         <span class="contact-name" *ngIf="!isCollapsed">{{
@@ -35,33 +35,47 @@
         class="d-flex flex-column justify-content-start align-items-start"
         *ngIf="selectedContact"
       >
-        <h3 class="contact-name">{{ selectedContact.name }}</h3>
-        <span class="last-seen"
-          >Ultimo accesso alle:
-          {{ selectedContact.lastActive | date : "HH:mm" }}</span
-        >
+        <div class="d-flex align-items-center h-25">
+          <nz-avatar
+            nzSize="large"
+            nzText="{{ selectedContact.avatar[0] }}"
+            class="contact-avatar mr-3"
+          ></nz-avatar>
+          <div>
+            <h3 class="contact-name">{{ selectedContact.name }}</h3>
+            <span class="last-seen"
+              >Ultimo accesso alle:
+              {{ selectedContact.lastActive | date : "HH:mm" }}</span
+            >
+          </div>
+        </div>
       </div>
     </nz-header>
 
     <nz-content>
       <div class="chat-container">
+        <!-- Chat selezionata -->
         <div
           *ngIf="selectedContact; else noContactSelected"
           class="chat-content"
         >
-          <div *ngFor="let message of selectedContact.messages">
+          <div class="messages">
             <div
+              *ngFor="let message of selectedContact.messages"
               [class]="
-                message.sender === 'you'
+                message.sender === 'me'
                   ? 'message outgoing'
                   : 'message incoming'
               "
             >
-              <p>{{ message.text }}</p>
-              <span class="message-time">{{ message.time }}</span>
+              <p>{{ message.content }}</p>
+              <span class="message-time">{{
+                message.timestamp | date : "HH:mm"
+              }}</span>
             </div>
           </div>
         </div>
+        <!-- Messaggio se nessun contatto è selezionato -->
         <ng-template #noContactSelected>
           <div class="no-contact">
             <p>Seleziona un contatto per iniziare a chattare!</p>

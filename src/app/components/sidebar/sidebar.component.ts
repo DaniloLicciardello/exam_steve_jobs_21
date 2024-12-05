@@ -13,6 +13,9 @@ export class SidebarComponent {
   selectedContact: any = null;
   newMessageContent: string = '';
   isDrawerVisible: boolean = false;
+  newChat: boolean = false;
+  searchQuery: string = '';
+  filteredContacts = [...this.contacts];
 
   ngOnInit() {
     this.contacts = contacts;
@@ -24,12 +27,13 @@ export class SidebarComponent {
       // Se non ci sono dati nel localStorage, carica i contatti di default (se disponibili)
       this.contacts = contacts;
     }
+
+    this.filterContacts();
   }
 
   selectContact(contact: Contact) {
     this.selectedContact = contact;
     this.isContactSelected = true;
-    console.log(this.selectedContact); // Per verificare il valore di phone
   }
 
   sendMessage(): void {
@@ -50,7 +54,19 @@ export class SidebarComponent {
     localStorage.setItem('contacts', JSON.stringify(this.contacts));
   }
 
-  openDrawer(): void {
-    this.isDrawerVisible = true;
+  filterContacts() {
+    if (this.searchQuery.trim()) {
+      this.filteredContacts = this.contacts.filter((contact) =>
+        contact.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    } else {
+      this.filteredContacts = [...this.contacts];
+    }
+  }
+
+  startChat(contact: Contact) {
+    console.log('Avviata chat con', contact);
+    // Aggiungi la logica per iniziare la conversazione
+    this.newChat = false; // Chiudi il drawer
   }
 }

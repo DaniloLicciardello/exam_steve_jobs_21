@@ -6,24 +6,96 @@
     [(nzCollapsed)]="isCollapsed"
     [nzTrigger]="null"
   >
-    <div class="logo">
-      <h2 *ngIf="!isCollapsed" class="sidebar-header fs-5">Chat</h2>
+    <div class="d-flex justify-content-around align-items-center logo">
+      <div class="left-section">
+        <h2 *ngIf="!isCollapsed" class="sidebar-header fs-5">Chat</h2>
+      </div>
+      <div class="right-section">
+        <a (click)="newChat = true">
+          <img src="../../../assets/images/whatsApp/add.svg" alt="New Chat" />
+        </a>
+      </div>
     </div>
+
+    <nz-drawer
+      [nzClosable]="true"
+      [nzVisible]="newChat"
+      [nzPlacement]="'left'"
+      nzTitle="Nuova chat"
+      (nzOnClose)="newChat = false"
+    >
+      <ng-container *nzDrawerContent>
+        <div class="chat-creation">
+          <input
+            [(ngModel)]="searchQuery"
+            (ngModelChange)="filterContacts()"
+            class="form-control"
+            placeholder="Cerca contatti..."
+          />
+
+          <ul class="contact-list">
+            <li
+              *ngFor="let contact of filteredContacts"
+              (click)="startChat(contact)"
+              onkeyup="startChat(contact)"
+            >
+              <div class="contact">
+                <nz-avatar
+                  *ngIf="contact.avatar[0]; else letterAvatar"
+                  nzSize="large"
+                  [nzSrc]="contact.avatar[0]"
+                  nzText="{{ contact.avatar[0] }}"
+                  class="contact-avatar mr-3"
+                ></nz-avatar>
+
+                <ng-template #letterAvatar>
+                  <nz-avatar
+                    nzSize="large"
+                    nzText="{{ contact.avatar }}"
+                    class="contact-avatar mr-3"
+                  ></nz-avatar>
+                </ng-template>
+
+                <span>{{ contact.name }}</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </ng-container>
+    </nz-drawer>
+
     <ul nz-menu nzTheme="dark" nzMode="inline">
       <li
         *ngFor="let contact of contacts"
         nz-menu-item
         (click)="selectContact(contact)"
         onkeydown="selectContact(contact)"
+        style="height: 100%"
       >
-        <nz-avatar
-          nzSize="small"
-          nzText="{{ contact.avatar[0] }}"
-          class="contact-avatar"
-        ></nz-avatar>
-        <span class="contact-name" *ngIf="!isCollapsed">{{
-          contact.name
-        }}</span>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center">
+            <nz-avatar
+              nzSize="small"
+              nzText="{{ contact.avatar[0] }}"
+              class="contact-avatar"
+            ></nz-avatar>
+
+            <div class="contact-details d-flex flex-column ms-2">
+              <span class="contact-name" *ngIf="!isCollapsed">{{
+                contact.name
+              }}</span>
+              <span class="last-message" *ngIf="contact.lastMessage">{{
+                contact.lastMessage
+              }}</span>
+            </div>
+          </div>
+
+          <div class="contact-date">
+            <span class="date" *ngIf="contact.lastActive">
+              {{ contact.lastActive | date : "shortTime" }}
+            </span>
+          </div>
+        </div>
       </li>
     </ul>
   </nz-sider>
@@ -41,9 +113,9 @@
             nzText="{{ selectedContact.avatar[0] }}"
             class="contact-avatar mr-3"
             (click)="isDrawerVisible = true"
-            onkeyup="openDrawer()"
+            onkeyup="isDrawerVisible = true"
           ></nz-avatar>
-          <div>
+          <div class="ms-3">
             <h3 class="contact-name">{{ selectedContact.name }}</h3>
             <span class="last-seen"
               >Ultimo accesso alle:
